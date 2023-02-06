@@ -3,6 +3,7 @@ using BooruSharp.Booru;
 using BooruSharp.Search.Post;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing.Imaging;
 using System.Net;
 using System.Windows.Forms;
 
@@ -57,7 +58,11 @@ namespace BooruImageDownloader
                     {
                         SearchResult result = await GetResult((int)ID);
                         _results.Enqueue(result);
-                    }    
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter in a proper ID number", "Incorrect ID number", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
@@ -69,10 +74,21 @@ namespace BooruImageDownloader
                             _results.Enqueue(result);
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Please enter in a proper limit number", "Incorrect limit number", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
 
                 _totalCount = _results.Count;
-                DownloadContents();
+                if (_results.Count > 0)
+                {
+                    DownloadContents();
+                }
+                else
+                {
+                    MessageBox.Show("There are no results for that tag or ID", "No results found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -81,9 +97,9 @@ namespace BooruImageDownloader
             SearchResult _downloadResult = _results.Dequeue();
             if (_downloadResult.FileUrl != null)
             {
-                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, _downloadResult.FileUrl.OriginalString);
+                using HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, _downloadResult.FileUrl.OriginalString);
                 request.Headers.Add("User-Agent", "Other");
-                HttpResponseMessage response = await _client.SendAsync(request);
+                using HttpResponseMessage response = await _client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
                 responseContents = await response.Content.ReadAsByteArrayAsync();
 
@@ -99,13 +115,12 @@ namespace BooruImageDownloader
 
                 img = Image.FromStream(memStr);
                 PBX_Preview.Image = img;
-                img.Save(Path.Combine(TXT_OutputFolder.Text, $"Image_{_downloadResult.ID}.jpg"));
+                img.Save(Path.Combine(TXT_OutputFolder.Text, $"Image_{_downloadResult.ID}"), ImageFormat.Jpeg);
+
                 LBL_ImageCount.Text = $"Image: {++_downloadCount} out of {_totalCount} processed";
                 LBL_ImageURL.Text = $"Image URL: {_downloadResult.PostUrl.OriginalString}";
-                LBL_Size.Text = $"Size: {SizeFormatter.GetBytesReadable(ulong.Parse(_downloadResult.Size.ToString()))}";
-                PBR_DownloadedImages.Value = ((_downloadCount / _totalCount) * 100);
-                response.Content.Dispose();
-                responseContents = new byte[0];
+                LBL_Size.Text = $"Size: {SizeFormatter.GetBytesReadable(ulong.Parse(response.Content.Headers.ContentLength.ToString()))}";
+                PBR_DownloadedImages.Value = (int)((_downloadCount / _totalCount) * 100);
             }
 
             if (_results.Count > 0)
