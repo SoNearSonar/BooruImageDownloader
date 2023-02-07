@@ -50,10 +50,17 @@
             this.LBL_ImageCount = new System.Windows.Forms.Label();
             this.GBX_Preview = new System.Windows.Forms.GroupBox();
             this.PBX_Preview = new System.Windows.Forms.PictureBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BTN_Set = new System.Windows.Forms.Button();
+            this.TXT_Username = new System.Windows.Forms.TextBox();
+            this.LBL_Username = new System.Windows.Forms.Label();
+            this.TXT_APIKey = new System.Windows.Forms.TextBox();
+            this.LBL_APIKey = new System.Windows.Forms.Label();
             this.GBX_Information.SuspendLayout();
             this.GBX_Progress.SuspendLayout();
             this.GBX_Preview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBX_Preview)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // GBX_Information
@@ -204,10 +211,10 @@
             this.GBX_Progress.Controls.Add(this.PBR_DownloadedImages);
             this.GBX_Progress.Controls.Add(this.LBL_ImageURL);
             this.GBX_Progress.Controls.Add(this.LBL_ImageCount);
-            this.GBX_Progress.Location = new System.Drawing.Point(8, 243);
+            this.GBX_Progress.Location = new System.Drawing.Point(8, 375);
             this.GBX_Progress.Name = "GBX_Progress";
             this.GBX_Progress.Size = new System.Drawing.Size(441, 122);
-            this.GBX_Progress.TabIndex = 14;
+            this.GBX_Progress.TabIndex = 20;
             this.GBX_Progress.TabStop = false;
             this.GBX_Progress.Text = "Progress";
             // 
@@ -217,7 +224,7 @@
             this.LBL_Size.Location = new System.Drawing.Point(225, 24);
             this.LBL_Size.Name = "LBL_Size";
             this.LBL_Size.Size = new System.Drawing.Size(55, 15);
-            this.LBL_Size.TabIndex = 16;
+            this.LBL_Size.TabIndex = 22;
             this.LBL_Size.Text = "Size: N/A";
             // 
             // LBL_Progress
@@ -226,7 +233,7 @@
             this.LBL_Progress.Location = new System.Drawing.Point(9, 93);
             this.LBL_Progress.Name = "LBL_Progress";
             this.LBL_Progress.Size = new System.Drawing.Size(55, 15);
-            this.LBL_Progress.TabIndex = 18;
+            this.LBL_Progress.TabIndex = 24;
             this.LBL_Progress.Text = "Progress:";
             // 
             // PBR_DownloadedImages
@@ -234,7 +241,7 @@
             this.PBR_DownloadedImages.Location = new System.Drawing.Point(109, 89);
             this.PBR_DownloadedImages.Name = "PBR_DownloadedImages";
             this.PBR_DownloadedImages.Size = new System.Drawing.Size(317, 23);
-            this.PBR_DownloadedImages.TabIndex = 19;
+            this.PBR_DownloadedImages.TabIndex = 25;
             // 
             // LBL_ImageURL
             // 
@@ -242,7 +249,7 @@
             this.LBL_ImageURL.Location = new System.Drawing.Point(9, 58);
             this.LBL_ImageURL.Name = "LBL_ImageURL";
             this.LBL_ImageURL.Size = new System.Drawing.Size(92, 15);
-            this.LBL_ImageURL.TabIndex = 17;
+            this.LBL_ImageURL.TabIndex = 23;
             this.LBL_ImageURL.Text = "Image URL: N/A";
             // 
             // LBL_ImageCount
@@ -251,7 +258,7 @@
             this.LBL_ImageCount.Location = new System.Drawing.Point(8, 24);
             this.LBL_ImageCount.Name = "LBL_ImageCount";
             this.LBL_ImageCount.Size = new System.Drawing.Size(115, 15);
-            this.LBL_ImageCount.TabIndex = 15;
+            this.LBL_ImageCount.TabIndex = 21;
             this.LBL_ImageCount.Text = "Image Number: N/A";
             // 
             // GBX_Preview
@@ -259,25 +266,82 @@
             this.GBX_Preview.Controls.Add(this.PBX_Preview);
             this.GBX_Preview.Location = new System.Drawing.Point(463, 2);
             this.GBX_Preview.Name = "GBX_Preview";
-            this.GBX_Preview.Size = new System.Drawing.Size(345, 363);
-            this.GBX_Preview.TabIndex = 15;
+            this.GBX_Preview.Size = new System.Drawing.Size(441, 495);
+            this.GBX_Preview.TabIndex = 26;
             this.GBX_Preview.TabStop = false;
             this.GBX_Preview.Text = "Preview";
             // 
             // PBX_Preview
             // 
-            this.PBX_Preview.Location = new System.Drawing.Point(11, 21);
+            this.PBX_Preview.Location = new System.Drawing.Point(16, 42);
             this.PBX_Preview.Name = "PBX_Preview";
-            this.PBX_Preview.Size = new System.Drawing.Size(324, 332);
+            this.PBX_Preview.Size = new System.Drawing.Size(410, 410);
             this.PBX_Preview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PBX_Preview.TabIndex = 0;
             this.PBX_Preview.TabStop = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.BTN_Set);
+            this.groupBox1.Controls.Add(this.TXT_Username);
+            this.groupBox1.Controls.Add(this.LBL_Username);
+            this.groupBox1.Controls.Add(this.TXT_APIKey);
+            this.groupBox1.Controls.Add(this.LBL_APIKey);
+            this.groupBox1.Location = new System.Drawing.Point(8, 242);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(441, 129);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Authentication";
+            // 
+            // BTN_Set
+            // 
+            this.BTN_Set.Location = new System.Drawing.Point(185, 93);
+            this.BTN_Set.Name = "BTN_Set";
+            this.BTN_Set.Size = new System.Drawing.Size(82, 23);
+            this.BTN_Set.TabIndex = 19;
+            this.BTN_Set.Text = "Set";
+            this.BTN_Set.UseVisualStyleBackColor = true;
+            this.BTN_Set.Click += new System.EventHandler(this.BTN_Set_Click);
+            // 
+            // TXT_Username
+            // 
+            this.TXT_Username.Location = new System.Drawing.Point(109, 26);
+            this.TXT_Username.Name = "TXT_Username";
+            this.TXT_Username.Size = new System.Drawing.Size(317, 23);
+            this.TXT_Username.TabIndex = 16;
+            // 
+            // LBL_Username
+            // 
+            this.LBL_Username.AutoSize = true;
+            this.LBL_Username.Location = new System.Drawing.Point(9, 27);
+            this.LBL_Username.Name = "LBL_Username";
+            this.LBL_Username.Size = new System.Drawing.Size(63, 15);
+            this.LBL_Username.TabIndex = 15;
+            this.LBL_Username.Text = "Username:";
+            // 
+            // TXT_APIKey
+            // 
+            this.TXT_APIKey.Location = new System.Drawing.Point(109, 60);
+            this.TXT_APIKey.Name = "TXT_APIKey";
+            this.TXT_APIKey.Size = new System.Drawing.Size(317, 23);
+            this.TXT_APIKey.TabIndex = 18;
+            // 
+            // LBL_APIKey
+            // 
+            this.LBL_APIKey.AutoSize = true;
+            this.LBL_APIKey.Location = new System.Drawing.Point(9, 63);
+            this.LBL_APIKey.Name = "LBL_APIKey";
+            this.LBL_APIKey.Size = new System.Drawing.Size(50, 15);
+            this.LBL_APIKey.TabIndex = 17;
+            this.LBL_APIKey.Text = "API Key:";
             // 
             // BooruImageDownloader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(817, 372);
+            this.ClientSize = new System.Drawing.Size(911, 504);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.GBX_Preview);
             this.Controls.Add(this.GBX_Progress);
             this.Controls.Add(this.GBX_Information);
@@ -290,6 +354,8 @@
             this.GBX_Progress.PerformLayout();
             this.GBX_Preview.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PBX_Preview)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -318,5 +384,11 @@
         private Label LBL_Size;
         private GroupBox GBX_Preview;
         private PictureBox PBX_Preview;
+        private GroupBox groupBox1;
+        private Button BTN_Set;
+        private TextBox TXT_Username;
+        private Label LBL_Username;
+        private TextBox TXT_APIKey;
+        private Label LBL_APIKey;
     }
 }

@@ -19,11 +19,11 @@ namespace BooruImageDownloader
         readonly Sakugabooru _sakugaClient = new Sakugabooru();
         readonly Yandere _yandClient = new Yandere();
 
-        Queue<SearchResult> _results = new Queue<SearchResult>();
+        readonly Queue<SearchResult> _results = new Queue<SearchResult>();
         int _downloadCount = 0;
         int _totalCount = 0;
 
-        Image img;
+        Image? img;
 
         public BooruImageDownloader()
         {
@@ -103,6 +103,30 @@ namespace BooruImageDownloader
             }
         }
 
+        private void BTN_Set_Click(object sender, EventArgs e)
+        {
+            BooruAuth auth = new BooruAuth(TXT_Username.Text, TXT_APIKey.Text);
+            switch (CBX_Website.SelectedIndex)
+            {
+                case 0:
+                    _danbooruClient.Auth = auth;
+                    break;
+                case 1:
+                    _gelbooruClient.Auth = auth;
+                    break;
+                case 2:
+                    _konaClient.Auth = auth;
+                    break;
+                case 3:
+                    _sakugaClient.Auth = auth;
+                    break;
+                case 4:
+                    _yandClient.Auth = auth;
+                    break;
+            }
+            MessageBox.Show($"Credentials for {CBX_Website.SelectedItem} have been set", "Set credentials", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         private async void DownloadContents()
         {
             BTN_Download.Enabled = false;
@@ -160,6 +184,7 @@ namespace BooruImageDownloader
             }
             catch (HttpRequestException)
             {
+                MessageBox.Show("There are no results for that ID", "No results found", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return default;
             }
         }
@@ -187,7 +212,7 @@ namespace BooruImageDownloader
             }
             catch (TooManyTags)
             {
-                MessageBox.Show($"You cannot search 2 or more tags with {CBX_Website.SelectedItem.ToString()} unless you have an account", "Too many tags error");
+                MessageBox.Show($"You cannot search 2 or more tags with {CBX_Website.SelectedItem} unless you have an account", "Too many tags error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return default;
             }
         }
