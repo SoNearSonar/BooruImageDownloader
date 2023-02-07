@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BooruImageDownloader.Utilities
 {
-    public static class SizeFormatter
+    public static class DataFormatter
     {
         /**
          * Credit to this user from StackOverflow: https://stackoverflow.com/users/553396/humbads
@@ -56,6 +56,11 @@ namespace BooruImageDownloader.Utilities
             readable /= 1024;
             // Return formatted number with suffix
             return readable.ToString("0.##") + suffix;
+        }
+
+        public static int GetPrecentage(double currentImageNumber, double totalImages)
+        {
+            return (int)((currentImageNumber / totalImages) * 100);
         }
     }
 }

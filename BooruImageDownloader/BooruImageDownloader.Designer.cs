@@ -214,11 +214,11 @@
             // LBL_Size
             // 
             this.LBL_Size.AutoSize = true;
-            this.LBL_Size.Location = new System.Drawing.Point(184, 24);
+            this.LBL_Size.Location = new System.Drawing.Point(225, 24);
             this.LBL_Size.Name = "LBL_Size";
-            this.LBL_Size.Size = new System.Drawing.Size(30, 15);
+            this.LBL_Size.Size = new System.Drawing.Size(55, 15);
             this.LBL_Size.TabIndex = 16;
-            this.LBL_Size.Text = "Size:";
+            this.LBL_Size.Text = "Size: N/A";
             // 
             // LBL_Progress
             // 
@@ -241,18 +241,18 @@
             this.LBL_ImageURL.AutoSize = true;
             this.LBL_ImageURL.Location = new System.Drawing.Point(9, 58);
             this.LBL_ImageURL.Name = "LBL_ImageURL";
-            this.LBL_ImageURL.Size = new System.Drawing.Size(67, 15);
+            this.LBL_ImageURL.Size = new System.Drawing.Size(92, 15);
             this.LBL_ImageURL.TabIndex = 17;
-            this.LBL_ImageURL.Text = "Image URL:";
+            this.LBL_ImageURL.Text = "Image URL: N/A";
             // 
             // LBL_ImageCount
             // 
             this.LBL_ImageCount.AutoSize = true;
             this.LBL_ImageCount.Location = new System.Drawing.Point(8, 24);
             this.LBL_ImageCount.Name = "LBL_ImageCount";
-            this.LBL_ImageCount.Size = new System.Drawing.Size(90, 15);
+            this.LBL_ImageCount.Size = new System.Drawing.Size(115, 15);
             this.LBL_ImageCount.TabIndex = 15;
-            this.LBL_ImageCount.Text = "Image Number:";
+            this.LBL_ImageCount.Text = "Image Number: N/A";
             // 
             // GBX_Preview
             // 
