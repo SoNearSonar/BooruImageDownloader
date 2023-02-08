@@ -2,11 +2,7 @@ using BooruImageDownloader.Utilities;
 using BooruSharp.Booru;
 using BooruSharp.Search;
 using BooruSharp.Search.Post;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing.Imaging;
-using System.Net;
-using System.Windows.Forms;
+using System.Configuration.Internal;
 
 namespace BooruImageDownloader
 {
@@ -23,7 +19,7 @@ namespace BooruImageDownloader
         int _downloadCount = 0;
         int _totalCount = 0;
 
-        Image? img;
+        Image img;
 
         public BooruImageDownloader()
         {
@@ -133,22 +129,33 @@ namespace BooruImageDownloader
             SearchResult _downloadResult = _results.Dequeue();
             if (_downloadResult.FileUrl != null)
             {
-                using HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, _downloadResult.FileUrl.OriginalString);
-                request.Headers.Add("User-Agent", "Other");
-                using HttpResponseMessage response = await _client.SendAsync(request);
-                response.EnsureSuccessStatusCode();
-                using Stream responseContents = await response.Content.ReadAsStreamAsync();
+                Stream responseImage = await GetImageFromReasult(_downloadResult.FileUrl);
+                Stream responseThumbnail = await GetImageFromReasult(_downloadResult.PreviewUrl);
 
                 img?.Dispose();
                 PBX_Preview.Image?.Dispose();
 
-                img = Image.FromStream(responseContents);
-                PBX_Preview.Image = img;
-                img.Save(Path.Combine(TXT_OutputFolder.Text, $"Image_{_downloadResult.ID}.png"));
+                if (responseImage != null && responseThumbnail != null)
+                {
+                    try
+                    {
+                        img = Image.FromStream(responseImage);
+                        img.Save(Path.Combine(TXT_OutputFolder.Text, $"Image_{_downloadResult.ID}.png"));
+                        PBX_Preview.Image = Image.FromStream(responseThumbnail);
+                    }
+                    catch
+                    {
+                        img?.Dispose();
+                        PBX_Preview.Image?.Dispose();
+                    }
+                    responseImage.Dispose();
+                    responseThumbnail.Dispose();
+                }
+
 
                 LBL_ImageCount.Text = $"Image: {++_downloadCount} out of {_totalCount} processed";
                 LBL_ImageURL.Text = $"Image URL: {_downloadResult.PostUrl.OriginalString}";
-                LBL_Size.Text = $"Size: {DataFormatter.GetBytesReadable(ulong.Parse(response.Content.Headers.ContentLength.ToString()))}";
+                LBL_Size.Text = $"Size: {DataFormatter.GetBytesReadable(_downloadResult.Size != null ? (ulong)_downloadResult.Size : 0)}";
                 PBR_DownloadedImages.Value = DataFormatter.GetPrecentage(_downloadCount, _totalCount);
             }
 
@@ -159,6 +166,10 @@ namespace BooruImageDownloader
             else
             {
                 BTN_Download.Enabled = true;
+                LBL_ImageCount.Text = $"Image: N/A";
+                LBL_ImageURL.Text = $"Image URL: N/A";
+                LBL_Size.Text = $"Size: N/A";
+                PBR_DownloadedImages.Value = 0;
             }
         }
 
@@ -191,7 +202,6 @@ namespace BooruImageDownloader
 
         private async Task<SearchResult[]> GetResults(int limit, string[] tags)
         {
-            MessageBox.Show(tags.Length.ToString());
             try
             {
                 switch (CBX_Website.SelectedIndex)
@@ -215,6 +225,15 @@ namespace BooruImageDownloader
                 MessageBox.Show($"You cannot search 2 or more tags with {CBX_Website.SelectedItem} unless you have an account", "Too many tags error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return default;
             }
+        }
+
+        private async Task<Stream> GetImageFromReasult(Uri uri)
+        {
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, uri.OriginalString);
+            request.Headers.Add("User-Agent", "Other");
+            HttpResponseMessage response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStreamAsync();
         }
     }
 }
