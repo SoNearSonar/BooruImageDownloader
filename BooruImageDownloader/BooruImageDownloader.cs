@@ -30,6 +30,13 @@ namespace BooruImageDownloader
         private void BooruImageDownloader_Load(object sender, EventArgs e)
         {
             UpdateTextBoxVisibility();
+            CBX_Website.SelectedIndex = Properties.Settings.Default.WebsiteIndex;
+            TXT_ID.Text = Properties.Settings.Default.ContentID;
+            TXT_DownloadLimit.Text = Properties.Settings.Default.ContentDownloadLimit;
+            TXT_OutputFolder.Text = Properties.Settings.Default.OutputFolder;
+            TXT_Tags.Text = Properties.Settings.Default.Tags;
+            TBR_ImageScale.Value = Properties.Settings.Default.ImageScaleValue != 0 ? Properties.Settings.Default.ImageScaleValue : 100;
+            CHK_IndividualDownload.Checked = Properties.Settings.Default.IsIndividualDownload;
         }
 
         private void CHK_IndividualDownload_CheckedChanged(object sender, EventArgs e)
@@ -212,6 +219,18 @@ namespace BooruImageDownloader
             HttpResponseMessage response = await _client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStreamAsync();
+        }
+
+        private void BooruImageDownloader_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.WebsiteIndex = CBX_Website.SelectedIndex;
+            Properties.Settings.Default.ContentID = TXT_ID.Text;
+            Properties.Settings.Default.ContentDownloadLimit = TXT_DownloadLimit.Text;
+            Properties.Settings.Default.OutputFolder = TXT_OutputFolder.Text;
+            Properties.Settings.Default.Tags = TXT_Tags.Text;
+            Properties.Settings.Default.ImageScaleValue = TBR_ImageScale.Value;
+            Properties.Settings.Default.IsIndividualDownload = CHK_IndividualDownload.Checked;
+            Properties.Settings.Default.Save();
         }
     }
 }

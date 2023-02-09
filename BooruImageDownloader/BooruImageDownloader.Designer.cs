@@ -50,9 +50,9 @@
             this.GBX_Preview = new System.Windows.Forms.GroupBox();
             this.PBX_Preview = new System.Windows.Forms.PictureBox();
             this.GBX_ImageScaling = new System.Windows.Forms.GroupBox();
-            this.LBL_ImageScale = new System.Windows.Forms.Label();
-            this.TBR_ImageScale = new System.Windows.Forms.TrackBar();
             this.LBL_ImageMessage = new System.Windows.Forms.Label();
+            this.TBR_ImageScale = new System.Windows.Forms.TrackBar();
+            this.LBL_ImageScale = new System.Windows.Forms.Label();
             this.GBX_Information.SuspendLayout();
             this.GBX_Preview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBX_Preview)).BeginInit();
@@ -280,27 +280,6 @@
             this.GBX_ImageScaling.TabStop = false;
             this.GBX_ImageScaling.Text = "Image Scaling";
             // 
-            // LBL_ImageScale
-            // 
-            this.LBL_ImageScale.AutoSize = true;
-            this.LBL_ImageScale.Location = new System.Drawing.Point(127, 41);
-            this.LBL_ImageScale.Name = "LBL_ImageScale";
-            this.LBL_ImageScale.Size = new System.Drawing.Size(73, 15);
-            this.LBL_ImageScale.TabIndex = 12;
-            this.LBL_ImageScale.Text = "Image Scale:";
-            // 
-            // TBR_ImageScale
-            // 
-            this.TBR_ImageScale.LargeChange = 25;
-            this.TBR_ImageScale.Location = new System.Drawing.Point(206, 35);
-            this.TBR_ImageScale.Maximum = 100;
-            this.TBR_ImageScale.Name = "TBR_ImageScale";
-            this.TBR_ImageScale.Size = new System.Drawing.Size(104, 45);
-            this.TBR_ImageScale.SmallChange = 10;
-            this.TBR_ImageScale.TabIndex = 13;
-            this.TBR_ImageScale.TickFrequency = 10;
-            this.TBR_ImageScale.Value = 100;
-            // 
             // LBL_ImageMessage
             // 
             this.LBL_ImageMessage.AutoSize = true;
@@ -309,6 +288,28 @@
             this.LBL_ImageMessage.Size = new System.Drawing.Size(260, 15);
             this.LBL_ImageMessage.TabIndex = 14;
             this.LBL_ImageMessage.Text = "Lower = Less Memory Use But Lower Resolution";
+            // 
+            // TBR_ImageScale
+            // 
+            this.TBR_ImageScale.LargeChange = 25;
+            this.TBR_ImageScale.Location = new System.Drawing.Point(206, 35);
+            this.TBR_ImageScale.Maximum = 100;
+            this.TBR_ImageScale.Minimum = 1;
+            this.TBR_ImageScale.Name = "TBR_ImageScale";
+            this.TBR_ImageScale.Size = new System.Drawing.Size(104, 45);
+            this.TBR_ImageScale.SmallChange = 10;
+            this.TBR_ImageScale.TabIndex = 13;
+            this.TBR_ImageScale.TickFrequency = 10;
+            this.TBR_ImageScale.Value = 100;
+            // 
+            // LBL_ImageScale
+            // 
+            this.LBL_ImageScale.AutoSize = true;
+            this.LBL_ImageScale.Location = new System.Drawing.Point(127, 41);
+            this.LBL_ImageScale.Name = "LBL_ImageScale";
+            this.LBL_ImageScale.Size = new System.Drawing.Size(73, 15);
+            this.LBL_ImageScale.TabIndex = 12;
+            this.LBL_ImageScale.Text = "Image Scale:";
             // 
             // BooruImageDownloader
             // 
@@ -320,6 +321,7 @@
             this.Controls.Add(this.GBX_Information);
             this.Name = "BooruImageDownloader";
             this.Text = "Booru Image Downloader";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BooruImageDownloader_FormClosing);
             this.Load += new System.EventHandler(this.BooruImageDownloader_Load);
             this.GBX_Information.ResumeLayout(false);
             this.GBX_Information.PerformLayout();
