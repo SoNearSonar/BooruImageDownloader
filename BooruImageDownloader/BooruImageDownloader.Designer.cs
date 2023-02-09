@@ -100,6 +100,7 @@
             this.BTN_Browse.TabIndex = 10;
             this.BTN_Browse.Text = "Browse";
             this.BTN_Browse.UseVisualStyleBackColor = true;
+            this.BTN_Browse.Click += new System.EventHandler(this.BTN_Browse_Click);
             // 
             // CHK_IndividualDownload
             // 

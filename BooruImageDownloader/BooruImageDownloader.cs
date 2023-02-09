@@ -2,6 +2,7 @@ using BooruImageDownloader.Utilities;
 using BooruSharp.Booru;
 using BooruSharp.Search;
 using BooruSharp.Search.Post;
+using Ookii.Dialogs.WinForms;
 using System.Configuration.Internal;
 
 namespace BooruImageDownloader
@@ -39,9 +40,36 @@ namespace BooruImageDownloader
             CHK_IndividualDownload.Checked = Properties.Settings.Default.IsIndividualDownload;
         }
 
+        private void BooruImageDownloader_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.WebsiteIndex = CBX_Website.SelectedIndex;
+            Properties.Settings.Default.ContentID = TXT_ID.Text;
+            Properties.Settings.Default.ContentDownloadLimit = TXT_DownloadLimit.Text;
+            Properties.Settings.Default.OutputFolder = TXT_OutputFolder.Text;
+            Properties.Settings.Default.Tags = TXT_Tags.Text;
+            Properties.Settings.Default.ImageScaleValue = TBR_ImageScale.Value;
+            Properties.Settings.Default.IsIndividualDownload = CHK_IndividualDownload.Checked;
+            Properties.Settings.Default.Save();
+        }
+
         private void CHK_IndividualDownload_CheckedChanged(object sender, EventArgs e)
         {
             UpdateTextBoxVisibility();
+        }
+
+        private void BTN_Browse_Click(object sender, EventArgs e)
+        {
+            VistaFolderBrowserDialog dialog = new VistaFolderBrowserDialog()
+            {
+                Description = "Select folder for downloaded files",
+                UseDescriptionForTitle = true
+            };
+            DialogResult selectedFolder = dialog.ShowDialog();
+            if (selectedFolder == DialogResult.OK)
+            {
+                TXT_OutputFolder.Text = dialog.SelectedPath;
+            }
+            dialog.Dispose();
         }
 
         private void UpdateTextBoxVisibility()
@@ -219,18 +247,6 @@ namespace BooruImageDownloader
             HttpResponseMessage response = await _client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStreamAsync();
-        }
-
-        private void BooruImageDownloader_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Properties.Settings.Default.WebsiteIndex = CBX_Website.SelectedIndex;
-            Properties.Settings.Default.ContentID = TXT_ID.Text;
-            Properties.Settings.Default.ContentDownloadLimit = TXT_DownloadLimit.Text;
-            Properties.Settings.Default.OutputFolder = TXT_OutputFolder.Text;
-            Properties.Settings.Default.Tags = TXT_Tags.Text;
-            Properties.Settings.Default.ImageScaleValue = TBR_ImageScale.Value;
-            Properties.Settings.Default.IsIndividualDownload = CHK_IndividualDownload.Checked;
-            Properties.Settings.Default.Save();
         }
     }
 }
