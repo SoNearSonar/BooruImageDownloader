@@ -320,6 +320,10 @@
             this.Controls.Add(this.GBX_ImageScaling);
             this.Controls.Add(this.GBX_Preview);
             this.Controls.Add(this.GBX_Information);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(923, 414);
+            this.MinimumSize = new System.Drawing.Size(923, 414);
             this.Name = "BooruImageDownloader";
             this.Text = "Booru Image Downloader";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BooruImageDownloader_FormClosing);
