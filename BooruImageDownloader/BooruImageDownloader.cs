@@ -117,6 +117,11 @@ namespace BooruImageDownloader
                     try
                     {
                         img = Image.FromStream(responseImage);
+                        img = ImageResizer.ResizeImage(
+                            img, 
+                            DataFormatter.GetScaledDimension(img.Width, TBR_ImageScale.Value * 0.01),
+                            DataFormatter.GetScaledDimension(img.Height, TBR_ImageScale.Value * 0.01)
+                        );
                         img.Save(Path.Combine(TXT_OutputFolder.Text, $"Image_{_downloadResult.ID}.png"));
                         PBX_Preview.Image = Image.FromStream(responseThumbnail);
                     }
@@ -195,7 +200,7 @@ namespace BooruImageDownloader
             }
             catch (TooManyTags)
             {
-                MessageBox.Show($"You cannot search 2 or more tags with {CBX_Website.SelectedItem} unless you have an account", "Too many tags error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"You cannot search 2 or more tags with {CBX_Website.SelectedItem}", "Too many tags error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return default;
             }
         }

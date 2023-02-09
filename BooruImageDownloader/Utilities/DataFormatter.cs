@@ -58,5 +58,10 @@ namespace BooruImageDownloader.Utilities
         {
             return (int)((currentImageNumber / totalImages) * 100);
         }
+
+        public static int GetScaledDimension(int dimensionSize, double precentage)
+        {
+            return (int)(dimensionSize * precentage);
+        }
     }
 }
