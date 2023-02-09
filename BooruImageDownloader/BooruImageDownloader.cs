@@ -99,30 +99,6 @@ namespace BooruImageDownloader
             }
         }
 
-        private void BTN_Set_Click(object sender, EventArgs e)
-        {
-            BooruAuth auth = new BooruAuth(TXT_Username.Text, TXT_APIKey.Text);
-            switch (CBX_Website.SelectedIndex)
-            {
-                case 0:
-                    _danbooruClient.Auth = auth;
-                    break;
-                case 1:
-                    _gelbooruClient.Auth = auth;
-                    break;
-                case 2:
-                    _konaClient.Auth = auth;
-                    break;
-                case 3:
-                    _sakugaClient.Auth = auth;
-                    break;
-                case 4:
-                    _yandClient.Auth = auth;
-                    break;
-            }
-            MessageBox.Show($"Credentials for {CBX_Website.SelectedItem} have been set", "Set credentials", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private async void DownloadContents()
         {
             BTN_Download.Enabled = false;

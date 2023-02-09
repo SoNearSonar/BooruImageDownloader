@@ -50,15 +50,9 @@
             this.GBX_Preview = new System.Windows.Forms.GroupBox();
             this.PBX_Preview = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.BTN_Set = new System.Windows.Forms.Button();
-            this.TXT_Username = new System.Windows.Forms.TextBox();
-            this.LBL_Username = new System.Windows.Forms.Label();
-            this.TXT_APIKey = new System.Windows.Forms.TextBox();
-            this.LBL_APIKey = new System.Windows.Forms.Label();
             this.GBX_Information.SuspendLayout();
             this.GBX_Preview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBX_Preview)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // GBX_Information
@@ -271,59 +265,12 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.BTN_Set);
-            this.groupBox1.Controls.Add(this.TXT_Username);
-            this.groupBox1.Controls.Add(this.LBL_Username);
-            this.groupBox1.Controls.Add(this.TXT_APIKey);
-            this.groupBox1.Controls.Add(this.LBL_APIKey);
             this.groupBox1.Location = new System.Drawing.Point(8, 238);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(441, 129);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Authentication";
-            // 
-            // BTN_Set
-            // 
-            this.BTN_Set.Location = new System.Drawing.Point(185, 93);
-            this.BTN_Set.Name = "BTN_Set";
-            this.BTN_Set.Size = new System.Drawing.Size(82, 23);
-            this.BTN_Set.TabIndex = 19;
-            this.BTN_Set.Text = "Set";
-            this.BTN_Set.UseVisualStyleBackColor = true;
-            this.BTN_Set.Click += new System.EventHandler(this.BTN_Set_Click);
-            // 
-            // TXT_Username
-            // 
-            this.TXT_Username.Location = new System.Drawing.Point(109, 26);
-            this.TXT_Username.Name = "TXT_Username";
-            this.TXT_Username.Size = new System.Drawing.Size(317, 23);
-            this.TXT_Username.TabIndex = 16;
-            // 
-            // LBL_Username
-            // 
-            this.LBL_Username.AutoSize = true;
-            this.LBL_Username.Location = new System.Drawing.Point(9, 27);
-            this.LBL_Username.Name = "LBL_Username";
-            this.LBL_Username.Size = new System.Drawing.Size(63, 15);
-            this.LBL_Username.TabIndex = 15;
-            this.LBL_Username.Text = "Username:";
-            // 
-            // TXT_APIKey
-            // 
-            this.TXT_APIKey.Location = new System.Drawing.Point(109, 60);
-            this.TXT_APIKey.Name = "TXT_APIKey";
-            this.TXT_APIKey.Size = new System.Drawing.Size(317, 23);
-            this.TXT_APIKey.TabIndex = 18;
-            // 
-            // LBL_APIKey
-            // 
-            this.LBL_APIKey.AutoSize = true;
-            this.LBL_APIKey.Location = new System.Drawing.Point(9, 63);
-            this.LBL_APIKey.Name = "LBL_APIKey";
-            this.LBL_APIKey.Size = new System.Drawing.Size(50, 15);
-            this.LBL_APIKey.TabIndex = 17;
-            this.LBL_APIKey.Text = "API Key:";
             // 
             // BooruImageDownloader
             // 
@@ -341,8 +288,6 @@
             this.GBX_Preview.ResumeLayout(false);
             this.GBX_Preview.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBX_Preview)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -371,10 +316,5 @@
         private GroupBox GBX_Preview;
         private PictureBox PBX_Preview;
         private GroupBox groupBox1;
-        private Button BTN_Set;
-        private TextBox TXT_Username;
-        private Label LBL_Username;
-        private TextBox TXT_APIKey;
-        private Label LBL_APIKey;
     }
 }
