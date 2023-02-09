@@ -1,4 +1,4 @@
-﻿namespace BooruImageDownloader
+namespace BooruImageDownloader
 {
     partial class BooruImageDownloader
     {
@@ -49,15 +49,9 @@
             this.LBL_ImageCount = new System.Windows.Forms.Label();
             this.GBX_Preview = new System.Windows.Forms.GroupBox();
             this.PBX_Preview = new System.Windows.Forms.PictureBox();
-            this.GBX_ImageScaling = new System.Windows.Forms.GroupBox();
-            this.LBL_ImageMessage = new System.Windows.Forms.Label();
-            this.TBR_ImageScale = new System.Windows.Forms.TrackBar();
-            this.LBL_ImageScale = new System.Windows.Forms.Label();
             this.GBX_Information.SuspendLayout();
             this.GBX_Preview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBX_Preview)).BeginInit();
-            this.GBX_ImageScaling.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TBR_ImageScale)).BeginInit();
             this.SuspendLayout();
             // 
             // GBX_Information
@@ -253,7 +247,7 @@
             this.GBX_Preview.Controls.Add(this.PBX_Preview);
             this.GBX_Preview.Controls.Add(this.LBL_ImageURL);
             this.GBX_Preview.Controls.Add(this.LBL_ImageCount);
-            this.GBX_Preview.Location = new System.Drawing.Point(458, 2);
+            this.GBX_Preview.Location = new System.Drawing.Point(8, 238);
             this.GBX_Preview.Name = "GBX_Preview";
             this.GBX_Preview.Size = new System.Drawing.Size(441, 365);
             this.GBX_Preview.TabIndex = 26;
@@ -262,68 +256,22 @@
             // 
             // PBX_Preview
             // 
-            this.PBX_Preview.Location = new System.Drawing.Point(122, 25);
+            this.PBX_Preview.Location = new System.Drawing.Point(118, 25);
             this.PBX_Preview.Name = "PBX_Preview";
             this.PBX_Preview.Size = new System.Drawing.Size(220, 220);
             this.PBX_Preview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PBX_Preview.TabIndex = 0;
             this.PBX_Preview.TabStop = false;
             // 
-            // GBX_ImageScaling
-            // 
-            this.GBX_ImageScaling.Controls.Add(this.LBL_ImageMessage);
-            this.GBX_ImageScaling.Controls.Add(this.TBR_ImageScale);
-            this.GBX_ImageScaling.Controls.Add(this.LBL_ImageScale);
-            this.GBX_ImageScaling.Location = new System.Drawing.Point(8, 238);
-            this.GBX_ImageScaling.Name = "GBX_ImageScaling";
-            this.GBX_ImageScaling.Size = new System.Drawing.Size(441, 129);
-            this.GBX_ImageScaling.TabIndex = 14;
-            this.GBX_ImageScaling.TabStop = false;
-            this.GBX_ImageScaling.Text = "Image Scaling";
-            // 
-            // LBL_ImageMessage
-            // 
-            this.LBL_ImageMessage.AutoSize = true;
-            this.LBL_ImageMessage.Location = new System.Drawing.Point(88, 82);
-            this.LBL_ImageMessage.Name = "LBL_ImageMessage";
-            this.LBL_ImageMessage.Size = new System.Drawing.Size(260, 15);
-            this.LBL_ImageMessage.TabIndex = 14;
-            this.LBL_ImageMessage.Text = "Lower = Less Memory Use But Lower Resolution";
-            // 
-            // TBR_ImageScale
-            // 
-            this.TBR_ImageScale.LargeChange = 25;
-            this.TBR_ImageScale.Location = new System.Drawing.Point(206, 35);
-            this.TBR_ImageScale.Maximum = 100;
-            this.TBR_ImageScale.Minimum = 1;
-            this.TBR_ImageScale.Name = "TBR_ImageScale";
-            this.TBR_ImageScale.Size = new System.Drawing.Size(104, 45);
-            this.TBR_ImageScale.SmallChange = 10;
-            this.TBR_ImageScale.TabIndex = 13;
-            this.TBR_ImageScale.TickFrequency = 10;
-            this.TBR_ImageScale.Value = 100;
-            // 
-            // LBL_ImageScale
-            // 
-            this.LBL_ImageScale.AutoSize = true;
-            this.LBL_ImageScale.Location = new System.Drawing.Point(127, 41);
-            this.LBL_ImageScale.Name = "LBL_ImageScale";
-            this.LBL_ImageScale.Size = new System.Drawing.Size(73, 15);
-            this.LBL_ImageScale.TabIndex = 12;
-            this.LBL_ImageScale.Text = "Image Scale:";
-            // 
             // BooruImageDownloader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 375);
-            this.Controls.Add(this.GBX_ImageScaling);
+            this.ClientSize = new System.Drawing.Size(459, 609);
             this.Controls.Add(this.GBX_Preview);
             this.Controls.Add(this.GBX_Information);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(923, 414);
-            this.MinimumSize = new System.Drawing.Size(923, 414);
             this.Name = "BooruImageDownloader";
             this.Text = "Booru Image Downloader";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BooruImageDownloader_FormClosing);
@@ -333,9 +281,6 @@
             this.GBX_Preview.ResumeLayout(false);
             this.GBX_Preview.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBX_Preview)).EndInit();
-            this.GBX_ImageScaling.ResumeLayout(false);
-            this.GBX_ImageScaling.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TBR_ImageScale)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -363,9 +308,5 @@
         private Label LBL_Size;
         private GroupBox GBX_Preview;
         private PictureBox PBX_Preview;
-        private GroupBox GBX_ImageScaling;
-        private Label LBL_ImageMessage;
-        private TrackBar TBR_ImageScale;
-        private Label LBL_ImageScale;
     }
 }

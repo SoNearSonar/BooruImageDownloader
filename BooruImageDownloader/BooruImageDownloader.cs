@@ -36,7 +36,6 @@ namespace BooruImageDownloader
             TXT_DownloadLimit.Text = Properties.Settings.Default.ContentDownloadLimit;
             TXT_OutputFolder.Text = Properties.Settings.Default.OutputFolder;
             TXT_Tags.Text = Properties.Settings.Default.Tags;
-            TBR_ImageScale.Value = Properties.Settings.Default.ImageScaleValue != 0 ? Properties.Settings.Default.ImageScaleValue : 100;
             CHK_IndividualDownload.Checked = Properties.Settings.Default.IsIndividualDownload;
         }
 
@@ -47,7 +46,6 @@ namespace BooruImageDownloader
             Properties.Settings.Default.ContentDownloadLimit = TXT_DownloadLimit.Text;
             Properties.Settings.Default.OutputFolder = TXT_OutputFolder.Text;
             Properties.Settings.Default.Tags = TXT_Tags.Text;
-            Properties.Settings.Default.ImageScaleValue = TBR_ImageScale.Value;
             Properties.Settings.Default.IsIndividualDownload = CHK_IndividualDownload.Checked;
             Properties.Settings.Default.Save();
         }
@@ -152,11 +150,6 @@ namespace BooruImageDownloader
                     try
                     {
                         img = Image.FromStream(responseImage);
-                        img = ImageResizer.ResizeImage(
-                            img, 
-                            DataFormatter.GetScaledDimension(img.Width, TBR_ImageScale.Value * 0.01),
-                            DataFormatter.GetScaledDimension(img.Height, TBR_ImageScale.Value * 0.01)
-                        );
                         img.Save(Path.Combine(TXT_OutputFolder.Text, $"Image_{_downloadResult.ID}.png"));
                         PBX_Preview.Image = Image.FromStream(responseThumbnail);
                     }
@@ -164,6 +157,9 @@ namespace BooruImageDownloader
                     {
                         img?.Dispose();
                         PBX_Preview.Image?.Dispose();
+                        LBL_ImageCount.Text = $"Image: {++_downloadCount} out of {_totalCount} failed";
+                        LBL_ImageURL.Text = $"Image URL: N/A";
+                        LBL_Size.Text = $"Size: N/A";
                     }
                     responseImage.Dispose();
                     responseThumbnail.Dispose();

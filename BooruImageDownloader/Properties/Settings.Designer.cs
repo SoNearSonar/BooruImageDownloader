@@ -94,17 +94,5 @@ namespace BooruImageDownloader.Properties {
                 this["IsIndividualDownload"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int ImageScaleValue {
-            get {
-                return ((int)(this["ImageScaleValue"]));
-            }
-            set {
-                this["ImageScaleValue"] = value;
-            }
-        }
     }
 }
