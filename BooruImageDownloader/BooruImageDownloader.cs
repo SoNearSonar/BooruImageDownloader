@@ -167,10 +167,6 @@ namespace BooruImageDownloader
             else
             {
                 BTN_Download.Enabled = true;
-                LBL_ImageCount.Text = $"Image: N/A";
-                LBL_ImageURL.Text = $"Image URL: N/A";
-                LBL_Size.Text = $"Size: N/A";
-                PBR_DownloadedImages.Value = 0;
             }
         }
 
