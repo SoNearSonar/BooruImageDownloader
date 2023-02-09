@@ -131,6 +131,7 @@ namespace BooruImageDownloader
             {
                 Stream responseImage = await GetImageFromReasult(_downloadResult.FileUrl);
                 Stream responseThumbnail = await GetImageFromReasult(_downloadResult.PreviewUrl);
+                ulong size = (ulong)responseImage.Length;
 
                 img?.Dispose();
                 PBX_Preview.Image?.Dispose();
@@ -155,7 +156,7 @@ namespace BooruImageDownloader
 
                 LBL_ImageCount.Text = $"Image: {++_downloadCount} out of {_totalCount} processed";
                 LBL_ImageURL.Text = $"Image URL: {_downloadResult.PostUrl.OriginalString}";
-                LBL_Size.Text = $"Size: {DataFormatter.GetBytesReadable(_downloadResult.Size != null ? (ulong)_downloadResult.Size : 0)}";
+                LBL_Size.Text = $"Size: {DataFormatter.GetBytesReadable(size)}";
                 PBR_DownloadedImages.Value = DataFormatter.GetPrecentage(_downloadCount, _totalCount);
             }
 
