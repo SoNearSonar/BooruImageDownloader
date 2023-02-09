@@ -28,6 +28,7 @@ namespace BooruImageDownloader
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BooruImageDownloader));
             this.GBX_Information = new System.Windows.Forms.GroupBox();
             this.BTN_Download = new System.Windows.Forms.Button();
             this.BTN_Browse = new System.Windows.Forms.Button();
@@ -256,6 +257,7 @@ namespace BooruImageDownloader
             // 
             // PBX_Preview
             // 
+            this.PBX_Preview.BackColor = System.Drawing.SystemColors.Control;
             this.PBX_Preview.Location = new System.Drawing.Point(118, 25);
             this.PBX_Preview.Name = "PBX_Preview";
             this.PBX_Preview.Size = new System.Drawing.Size(220, 220);
@@ -271,6 +273,7 @@ namespace BooruImageDownloader
             this.Controls.Add(this.GBX_Preview);
             this.Controls.Add(this.GBX_Information);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "BooruImageDownloader";
             this.Text = "Booru Image Downloader";

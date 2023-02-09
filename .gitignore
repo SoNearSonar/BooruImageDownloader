@@ -10,3 +10,7 @@
 BooruImageDownloader/bin/Debug/net6.0-windows/
 
 BooruImageDownloader/obj/
+
+BooruImageDownloader/bin/Release/net6.0-windows/
+
+BooruImageDownloader/Properties/PublishProfiles/
